@@ -153,9 +153,15 @@ async function run() {
     app.delete("/menu/:id", verifyJWT, verifyAdmin, async (req, res) => {
       const id = req.params.id;
 
-      const query = { _id: new ObjectId(id) };
+      console.log(id);
+
+      const query = { _id: id };
+
+      console.log("query", query);
 
       const result = await menuCollection.deleteOne(query);
+
+      console.log(result);
 
       res.send(result);
     });
